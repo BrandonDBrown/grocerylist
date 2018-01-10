@@ -1,0 +1,19 @@
+<div class="panel-group col-md-6 col-md-offset-3" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default" ng-repeat='(key, category) in categories'>
+    <div class="panel-heading" data-toggle="collapse" data-target='#collapse{{ key }}' role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <div role="button" data-parent="#accordion" aria-expanded="true" aria-controls="collapse{{ key }}">
+          {{ category }}
+          <span class="badge pull-right">{{ items.length }}</span>
+        </div>
+      </h4>
+    </div>
+    <div id="collapse{{ key }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="list-group">
+        <div class="list-group-item" ng-repeat='item in items'>
+          <h6 class="list-group-item-heading">{{ item }}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

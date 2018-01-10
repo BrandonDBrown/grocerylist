@@ -1,0 +1,41 @@
+<form class='col-md-6 col-md-offset-3 row' name='form'>
+  <div class='col-xs-3'>
+      <input type="number" name='quantity' class="form-control" ng-model='quantity' placeholder="Quantity" aria-label="quantity" required/>
+  </div>
+  <div class='col-xs-4'>
+      <input type="text" name='item' class="form-control" ng-model='inputItem' placeholder="Add item" aria-label="item" required/>
+  </div>
+  <div class="dropdown col-xs-4">
+    <div class="form-group">
+      <select class="form-control" id="sel1" ng-model="selectedCategory">
+        <option ng-repeat="(key, category) in categories">{{ category }}</option>
+      </select>
+    </div>
+  </div>
+  <button class='btn btn-primary col-xs-1' ng-disabled='selectedCategory == undefined || form.$invalid' ng-click='addItem()'><span class="fa fa-plus"></span></button>
+</form>
+
+<div class='row'>
+  <div class="col-xs-10 col-xs-offset-1 list-group">
+    <a ng-repeat='item in items track by $index' class="list-group-item">
+      <span class="badge pull-right">{{ item.quantity }}</span>
+      <h4 class="list-group-item-heading">{{ item.name }}</h4>
+      <p class="list-group-item-text">{{ item.category }}</p>
+    </a>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom animate">
+  <div class="container navbar-more visible-xs"></div>
+  <div class="container">
+    <div class="navbar-header hidden-xs">
+      <a class="navbar-brand">Commute LA</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right mobile-bar">
+      <!-- <nav-bar name="Add" href="#" icon="plus"></nav-bar> -->
+      <nav-bar  name='Edit' icon="bus"></nav-bar>
+      <nav-bar  name='Remove' href="#" icon="minus" ></nav-bar>
+    </ul>
+  </div>
+</nav>

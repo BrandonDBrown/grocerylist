@@ -1,0 +1,33 @@
+{
+  "name": "recipe",
+  "plural": "recipes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "account": {
+      "type": "belongsTo",
+      "model": "account",
+      "foreignKey": "accountId"
+    },
+    "items": {
+      "type": "hasMany",
+      "model": "item",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

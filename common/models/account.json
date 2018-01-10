@@ -1,0 +1,22 @@
+{
+  "name": "account",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Timestamp": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "recipes": {
+      "type": "hasMany",
+      "model": "recipe",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
