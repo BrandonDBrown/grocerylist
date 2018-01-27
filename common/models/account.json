@@ -15,6 +15,11 @@
       "type": "hasMany",
       "model": "recipe",
       "foreignKey": ""
+    },
+    "lists": {
+      "type": "hasMany",
+      "model": "list",
+      "foreignKey": ""
     }
   },
   "acls": [],

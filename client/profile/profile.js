@@ -11,4 +11,11 @@ angular.module('myApp.profile', ['ngRoute'])
 
 .controller('profile', ['$scope', '$http', '_', 'Account', function($scope, $http, _, Account) {
   $scope.currentUser = Account.getCurrentId();
+  $http.get('api/lists').then(function(response) {
+    console.log(response.data);
+    $scope.lists = response.data;
+  },
+  function(error) {
+    console.log(error);
+  })
 }]);

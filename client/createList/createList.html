@@ -1,0 +1,12 @@
+<div class="btn btn-primary" ng-click="toProfile()">Back</div>
+
+<form class='row' name='form'>
+  <div class="col-md-6 col-md-offset-3 list-group">
+    <input type="text" name='list' class="form-control" ng-model='listName' placeholder="List Name" aria-label="list" required/>
+    <button class="list-group-item btn btn-default" ng-click="isToggled($event)" aria-pressed=false type="button" data-toggle="button" autocomplete="off" ng-repeat='recipe in recipes' recipe-id='{{ recipe.id }}'>
+      <h4 class="list-group-item-heading">{{ recipe.title }}</h4>
+      <p class="list-group-item-text">{{ recipe.description }}</p>
+    </button>
+  </div>
+  <button class='btn btn-primary' ng-disabled='areToggled.length === 0 || form.$invalid' ng-click="createList()">Create List</button>
+</form>

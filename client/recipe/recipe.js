@@ -1,16 +1,19 @@
 'use strict';
 
-angular.module('myApp.view1', ['ngRoute', 'underscore'])
+angular.module('myApp.recipe', ['ngRoute', 'underscore'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/account/:userId/recipes', {
-    templateUrl: 'view1/view1.html',
-    controller: 'View1Ctrl'
+    templateUrl: 'recipe/recipe.html',
+    controller: 'recipeCtrl'
   });
 }])
 
-.controller('View1Ctrl', [ '$scope', '$http', '_', 'Account', function($scope, $http, _, Account) {
+.controller('recipeCtrl', [ '$scope', '$http', '_', 'Account', '$location', function($scope, $http, _, Account, $location) {
   $scope.currentUser = Account.getCurrentId();
+  $scope.toProfile = function() {
+    $location.path('/account/' +$scope.currentUser);
+  }
   console.log($scope.currentUser);
   $http.get('/api/recipes').then(function(response) {
     $scope.recipes = response.data;

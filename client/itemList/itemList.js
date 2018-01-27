@@ -9,29 +9,44 @@ angular.module('myApp.itemList', ['ngRoute','myApp.navBar'])
   });
 }])
 
-.controller('itemList', ['$scope', '$http', '_', 'Recipe', '$location', function($scope, $http, _, Recipe, $location) {
-  $scope.currentRecipe = _.last($location.path().split('/'))
-  $http.get('/api/items').then(function(response) {
-    console.log(response.data);
-    $scope.items = response.data;
-  },
-  function(error) {
-    console.log(error);
-  })
+.controller('itemList', ['$scope', '$http', '_', 'Recipe', '$location', 'Account', 'Item', function($scope, $http, _, Recipe, $location, Account, Item) {
+  $scope.currentRecipe = _.last($location.path().split('/'));
+  console.log($scope.currentRecipe);
+  $scope.currentUser = Account.getCurrentId();
+
+  Item.find({filter: {where: {recipeId: $scope.currentRecipe}}},
+    function(response) {
+      $scope.items = response;
+      console.log(response);
+    },
+    function(response) {
+      // console.log(response);
+    }
+  )
+  // $http.get('/api/items', { where: {recipeId: $scope.currentRecipe}}).then(function(response) {
+  //   console.log(response.data);
+  //   $scope.items = response.data;
+  // },
+  // function(error) {
+  //   console.log(error);
+  // })
 
   $scope.addItem = function() {
     console.log($scope.quantity);
     console.log($scope.item);
-    console.log($scope.selectedCategory);
+    console.log($scope.currentRecipe);
     $http.post('/api/items', { "quantity": $scope.quantity, "name": $scope.inputItem, "category": $scope.selectedCategory, "recipeId": $scope.currentRecipe }).then(function(response) {
       $scope.inputItem= '';
       $scope.quantity = '';
-      $http.get('/api/items').then(function(response) {
-        $scope.items = response.data;
-      },
-      function(error) {
-        console.log(error);
-      })
+      Item.find({filter: {where: {recipeId: $scope.currentRecipe}}},
+        function(response) {
+          $scope.items = response;
+          console.log(response);
+        },
+        function(response) {
+          console.log(response);
+        }
+      )
     },
     function(error) {
       console.log(error);
@@ -43,22 +58,22 @@ angular.module('myApp.itemList', ['ngRoute','myApp.navBar'])
   $scope.categories = {
     One:'Baby Care',
     Two:'Beverages',
-    Three:'Bread & Bakery',
-    Four:'Breakfast & Cereal',
-    Five:'Canned Goods & Soups',
-    Six:'Condiments, Spices & Bake',
-    Seven:'Cookies, Snacks & Candy',
-    Eight:'Dairy, Eggs & Cheese',
+    Three:'Bread and Bakery',
+    Four:'Breakfast and Cereal',
+    Five:'Canned Goods and Soups',
+    Six:'Condiments, Spices and Bake',
+    Seven:'Cookies, Snacks and Candy',
+    Eight:'Dairy, Eggs and Cheese',
     Nine:'Deli',
     Ten:'Frozen Foods',
-    Eleven:'Fruits & Vegetables',
-    Twelve:'Grains, Pasta & Sides',
+    Eleven:'Fruits and Vegetables',
+    Twelve:'Grains, Pasta and Sides',
     Thirteen:'International Cuisine',
-    Fourteen:'Meat & Seafood',
-    Fifteen:'Paper, Cleaning & Home',
-    Sixteen:'Personal Care & Health',
+    Fourteen:'Meat and Seafood',
+    Fifteen:'Paper, Cleaning and Home',
+    Sixteen:'Personal Care and Health',
     Seventeen:'Pet Care',
-    Eighteen:'Wine, Beer & Spirits'
+    Eighteen:'Wine, Beer and Spirits'
   }
 }]);
 

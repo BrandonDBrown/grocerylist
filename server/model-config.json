@@ -38,5 +38,9 @@
   "item": {
     "dataSource": "mysqldb",
     "public": true
+  },
+  "list": {
+    "dataSource": "mysqldb",
+    "public": true
   }
 }
