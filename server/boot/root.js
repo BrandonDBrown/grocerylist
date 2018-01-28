@@ -9,7 +9,7 @@ module.exports = function(app) {
   var mysqldb = app.dataSources.mysqldb;
 
   // first autoupdate the `Author` model to avoid foreign key constraint failure
-  mysqldb.automigrate('account', function(err) {
+  mysqldb.automigrate('item', function(err) {
     if (err) throw err;
     console.log('\nAutoupdated table `Author`.');
   });
