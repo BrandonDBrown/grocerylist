@@ -9,6 +9,6 @@ angular.module('myApp.home', ['ngRoute'])
   });
 }])
 
-.controller('home', ['$scope', '$http', '_', function($scope, $http, _) {
+.controller('home', ['$scope', '$http', function($scope, $http) {
 
 }]);
