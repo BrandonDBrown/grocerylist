@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.recipe', ['ngRoute', 'underscore'])
+angular.module('myApp.recipe', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/account/:userId/recipes', {
