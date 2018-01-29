@@ -3,6 +3,7 @@
  * Got the idea from: http://stackoverflow.com/questions/14968297/use-underscore-inside-controllers
  * @author: Andres Aguilar https://github.com/andresesfm
  */
-angular.module('underscore', []).factory('_', ['$window', function($window) {
+var underscore = angular.module('underscore', [])
+underscore.factory('_', ['$window', function($window) {
     return $window._; // assumes underscore has already been loaded on the page
 }]);
