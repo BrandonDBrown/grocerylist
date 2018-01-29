@@ -13,6 +13,7 @@ angular.module('myApp', [
   'myApp.profile',
   'myApp.version',
   'ngResource',
+  'underscore',
   'lbServices'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

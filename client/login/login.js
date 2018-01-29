@@ -9,7 +9,7 @@ angular.module('myApp.login', ['ngRoute'])
   });
 }])
 
-.controller('login', ['$scope', '$http', '_', 'Account', '$location', function($scope, $http, _, Account, $location) {
+.controller('login', ['$scope', '$http', 'Account', '$location', function($scope, $http, Account, $location) {
   $scope.loginUser = function() {
     Account.login({email: $scope.email, password: $scope.password},
       function(response) {

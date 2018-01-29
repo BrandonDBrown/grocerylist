@@ -9,7 +9,7 @@ angular.module('myApp.signup', ['ngRoute'])
   });
 }])
 
-.controller('signup', ['$scope', '$http', '_', 'Account', function($scope, $http, _, Account) {
+.controller('signup', ['$scope', '$http', 'Account', function($scope, $http, Account) {
   $scope.signUpUser = function() {
     $scope.signUpResult = Account.create({email: $scope.email, password: $scope.password}, Account,
       function(err, token) {
