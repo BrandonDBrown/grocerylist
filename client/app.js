@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngRoute',
+  'underscore',
   'myApp.recipe',
   'myApp.list',
   'myApp.createlist',
@@ -13,7 +14,6 @@ angular.module('myApp', [
   'myApp.profile',
   'myApp.version',
   'ngResource',
-  'underscore',
   'lbServices'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
