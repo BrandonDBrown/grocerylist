@@ -12,9 +12,6 @@ angular.module('myApp.createlist', ['ngRoute'])
 .controller('createlist', ['$scope', '$http', '_', 'Account', '$location', 'Item', function($scope, $http, _, Account, $location, Item) {
   $scope.currentUser = Account.getCurrentId();
   $scope.areToggled = [];
-  $scope.toProfile = function() {
-    $location.path('/account/' +$scope.currentUser);
-  }
 
   $http.get('/api/recipes').then(function(response) {
     $scope.recipes = response.data;

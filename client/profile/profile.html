@@ -1,16 +1,29 @@
-<div class='row'>
-  <div class='col-md-12'>
-    <!-- If there are items on this current list page popup warning saying that any existing list will be deleted -->
-    <a href='#!/account/{{ currentUser }}/createlist'>Create New List</a>
-    <a href='#!/account/{{ currentUser }}/recipes'>Add Recipes</a>
+<!-- <div class='row'>
+  <div class='col-xs-8 col-xs-offset-2'>
+    <a class='btn btn-primary' href='#!/account/{{ currentUser }}/createlist'>Create List</a>
+    <a class='btn btn-success' href='#!/account/{{ currentUser }}/recipes'>Add Recipe</a>
   </div>
 </div>
 
+</br> -->
 
 <div class='row'>
-  <div class="col-md-6 col-md-offset-3 list-group">
+  <div class="col-xs-8 col-xs-offset-2 list-group">
     <a href="#!/account/{{ currentUser }}/list/{{ list.id }}" class="list-group-item" ng-repeat='list in lists'>
       <h4 class="list-group-item-heading">{{ list.name }}</h4>
     </a>
   </div>
 </div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom animate">
+  <div class="container navbar-more visible-xs"></div>
+  <div class="container">
+    <div class="navbar-header hidden-xs">
+    </div>
+
+    <ul class="nav navbar-nav navbar-right mobile-bar">
+      <nav-bar name='Create List' icon="list-ul" href='#!/account/{{ currentUser }}/createlist'></nav-bar>
+      <nav-bar name='Add Recipe' icon="shopping-basket" href='#!/account/{{ currentUser }}/recipes'></nav-bar>
+    </ul>
+  </div>
+</nav>

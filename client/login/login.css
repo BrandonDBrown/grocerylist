@@ -46,10 +46,13 @@ body {
 }
 .navbar {
   border-bottom: none;
+  border-top: none;
   /*height: calc(100%);*/
 	/*max-height: 300px;*/
 	/*-webkit-transform: translate(0px, calc(-100% + 69px));*/
 	/*transform: translate(0px, calc(-100% + 69px));*/
+  /*opacity: 0.8;*/
+
   background-color: transparent;
 }
 .navbar .container:not(.navbar-more) {
@@ -95,11 +98,13 @@ body {
 	border-width: 0px;
 }
 .navbar-more .navbar-nav > li > a, .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
-    color: #BAC1B8;
+    color: #7cbebb;
+
 }
 
 .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-nav > li > a:hover {
-    color: #FFC30F;
+  color: #36a4a8;
+
 }
 
 .navbar-more > .navbar-nav > li > a > span.menu-icon {
