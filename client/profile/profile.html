@@ -8,7 +8,7 @@
 </br> -->
 
 <div class='row'>
-  <div class="col-xs-8 col-xs-offset-2 list-group">
+  <div class="col-xs-10 col-xs-offset-1 list-group">
     <a href="#!/account/{{ currentUser }}/list/{{ list.id }}" class="list-group-item" ng-repeat='list in lists'>
       <h4 class="list-group-item-heading">{{ list.name }}</h4>
     </a>
@@ -23,7 +23,7 @@
 
     <ul class="nav navbar-nav navbar-right mobile-bar">
       <nav-bar name='Create List' icon="list-ul" href='#!/account/{{ currentUser }}/createlist'></nav-bar>
-      <nav-bar name='Add Recipe' icon="shopping-basket" href='#!/account/{{ currentUser }}/recipes'></nav-bar>
+      <nav-bar name='Recipes' icon="shopping-basket" href='#!/account/{{ currentUser }}/recipes'></nav-bar>
     </ul>
   </div>
 </nav>

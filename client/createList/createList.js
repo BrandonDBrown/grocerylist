@@ -4,7 +4,7 @@ angular.module('myApp.createlist', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when("/account/:userId/createlist", {
-    templateUrl: 'createlist/createlist.html',
+    templateUrl: 'createList/createList.html',
     controller: 'createlist'
   });
 }])
@@ -32,11 +32,14 @@ angular.module('myApp.createlist', ['ngRoute'])
     for (var i=0; i<$scope.areToggled.length; i++) {
       listIngredients.push({recipeId: $scope.areToggled[i]});
     }
+    console.log(listIngredients);
     Item.find({filter: {where: {or: listIngredients}}},
       function(res) {
         $scope.items = _.values(res);
+        console.log($scope.items);
         $http.post('api/lists', {name: $scope.listName, recipes: $scope.items, accountId: $scope.currentUser}).then(function(response) {
           console.log(response.data.id);
+          $scope.currentList = response.data.id;
           $location.path('/account/' +$scope.currentUser+ '/list/' +response.data.id);
         },
         function(error) {

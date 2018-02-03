@@ -12,11 +12,20 @@ body {
     /*color: #BAC1B8;*/
     max-width: 100%;
     overflow-x: hidden;
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
 }
 
 .list-group-item {
   opacity: 0.8;
+}
+
+.list-group {
+  padding-left: 15px;
+}
+
+.col-xs-6 {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .toggled {

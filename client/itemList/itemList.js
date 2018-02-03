@@ -32,9 +32,6 @@ angular.module('myApp.itemList', ['ngRoute','myApp.navBar'])
   // })
 
   $scope.addItem = function() {
-    console.log($scope.quantity);
-    console.log($scope.item);
-    console.log($scope.currentRecipe);
     $http.post('/api/items', { "quantity": $scope.quantity, "name": $scope.inputItem, "category": $scope.selectedCategory, "recipeId": $scope.currentRecipe }).then(function(response) {
       $scope.inputItem= '';
       $scope.quantity = '';
@@ -42,6 +39,8 @@ angular.module('myApp.itemList', ['ngRoute','myApp.navBar'])
         function(response) {
           $scope.items = response;
           console.log(response);
+          $scope.quantity = "";
+          $scope.item = "";
         },
         function(response) {
           console.log(response);
