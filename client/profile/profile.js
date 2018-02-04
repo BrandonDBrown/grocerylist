@@ -13,7 +13,7 @@ angular.module('myApp.profile', ['ngRoute'])
   $scope.currentUser = Account.getCurrentId();
   $http.get('api/lists').then(function(response) {
     console.log(response.data);
-    $scope.lists = response.data;
+    $scope.lists = response.data.reverse();
   },
   function(error) {
     console.log(error);

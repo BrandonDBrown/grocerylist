@@ -2,7 +2,7 @@
 <html lang="en" ng-app="myApp" class="no-js">
 <head>
   <!-- <meta charset="utf-8"> -->
-  <meta name="viewport" content="width=device-width, user-scalable=no" />  
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css">
@@ -15,6 +15,9 @@
   </style>
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <script>
+    document.addEventListener('gesturestart', function (e) {
+      e.preventDefault();
+    });
     // include angular loader, which allows the files to load in any order
     //@@NG_LOADER_START@@
     // You need to run `npm run update-index-async` to inject the angular async code here

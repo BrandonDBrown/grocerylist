@@ -39,7 +39,6 @@ angular.module('myApp.createlist', ['ngRoute'])
         console.log($scope.items);
         $http.post('api/lists', {name: $scope.listName, recipes: $scope.items, accountId: $scope.currentUser}).then(function(response) {
           console.log(response.data.id);
-          $scope.currentList = response.data.id;
           $location.path('/account/' +$scope.currentUser+ '/list/' +response.data.id);
         },
         function(error) {
