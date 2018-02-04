@@ -13,12 +13,12 @@ angular.module('myApp.list', ['ngRoute'])
   $scope.items = [];
   var listIngredients = [];
   $scope.currentUser = Account.getCurrentId();
-  $scope.currentlist = _.last($location.path().split('/'));
+  $scope.currentList = _.last($location.path().split('/'));
 
   List.find({filter: {where: {id: $scope.currentList}}},
     function(response) {
-      console.log($scope.currentlist);
-      $scope.stuff = response[$scope.currentlist-1].recipes;
+      console.log(response);
+      $scope.stuff = response[0].recipes;
       console.log($scope.stuff);
       for (var i=0; i<$scope.stuff.length; i++) {
         listIngredients.push($scope.stuff[i]);
