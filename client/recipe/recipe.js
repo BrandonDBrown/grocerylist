@@ -9,17 +9,19 @@ angular.module('myApp.recipe', ['ngRoute'])
   });
 }])
 
-.controller('recipeCtrl', [ '$scope', '$http', '_', 'Account', '$location', function($scope, $http, _, Account, $location) {
+.controller('recipeCtrl', [ '$scope', '$http', '_', 'Account', '$location', 'Recipe', function($scope, $http, _, Account, $location, Recipe) {
   $scope.currentUser = Account.getCurrentId();
   $scope.toProfile = function() {
     $location.path('/account/' +$scope.currentUser);
   }
   console.log($scope.currentUser);
-  $http.get('/api/recipes').then(function(response) {
-    $scope.recipes = response.data;
-  },
-  function(error) {
-    console.log(error);
+  Recipe.find({filter: {where: {accountId: $scope.currentUser}}},
+    function(response) {
+      console.log(response);
+      $scope.recipes = response;
+    },
+    function(error) {
+      console.log(error);
   })
 
   $scope.addRecipe = function() {
