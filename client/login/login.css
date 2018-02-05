@@ -4,7 +4,7 @@ html, body {
     height: 100%;
 }
 body {
-    padding-top: 50px;
+    /*padding-top: 30px;*/
     /*background-color: #2D698C;*/
     background-image: url("./background2.jpg");
     background-size: cover;
