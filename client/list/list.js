@@ -34,10 +34,23 @@ angular.module('myApp.list', ['ngRoute'])
     }
   )
 
-  $scope.strikeMe = function() {
-      $scope.strike = $scope.strike ? false : true;
-      return $scope.strike;
+
+  $scope.strikeMe = function(event) {
+    $scope.nameId = event.currentTarget.getAttribute('name');
+    if(event.currentTarget.getAttribute('class').includes('strike')){
+      $(event.target).removeClass("strike");
+    } else {
+      $(event.target).addClass("strike");
+    }
   }
+
+//   console.log(elem.currentTarget.getAttribute('class'));
+//   // _.without($scope.items, _.find($scope.items, ))
+//   // $scope.items = _.without($scope.items, );
+//   console.log($scope.items);
+// }
+
+
 
   // $scope.categories = {
   //   One:'Baby Care',
