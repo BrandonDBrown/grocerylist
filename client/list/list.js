@@ -11,6 +11,7 @@ angular.module('myApp.list', ['ngRoute'])
 
 .controller('list', ['$scope', '$http', '_', '$location', 'List', 'Item', 'Account', function($scope, $http, _, $location, List, Item, Account) {
   $scope.items = [];
+  $scope.strike = false;
   var listIngredients = [];
   $scope.currentUser = Account.getCurrentId();
   $scope.currentList = _.last($location.path().split('/'));
@@ -33,14 +34,10 @@ angular.module('myApp.list', ['ngRoute'])
     }
   )
 
-$scope.removeFromList = function(elem) {
-  console.log(elem.currentTarget.getAttribute('name'));
-  // _.without($scope.items, _.find($scope.items, ))
-  // $scope.items = _.without($scope.items, );
-  console.log($scope.items);
-}
-
-
+  $scope.strikeMe = function() {
+      $scope.strike = $scope.strike ? false : true;
+      return $scope.strike;
+  }
 
   // $scope.categories = {
   //   One:'Baby Care',

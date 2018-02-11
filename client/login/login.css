@@ -15,6 +15,10 @@ body {
     /*overflow-y: hidden;*/
 }
 
+.strike {
+  text-decoration: line-through;
+}
+
 .disabled {
   cursor: not-allowed;
 }
