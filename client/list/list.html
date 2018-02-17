@@ -15,8 +15,8 @@
     </div>
     <div id="collapse{{ key }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="list-group">
-        <div class="list-group-item" name='{{ $index }}' id="pop{{ $index }}" ng-click="strikeMe($event)" ng-show="'{{ category }}' === '{{ item.category }}'" ng-repeat="item in items">
-          <h6 class="list-group-item-heading"  name="{{ item.name }}">{{ item.name }}<span class="badge pull-right">{{ item.quantity }}</span></h6>
+        <div class="list-group-item" ng-click="strikeMe($event)" ng-show="'{{ category }}' === '{{ item.category }}'" ng-repeat="item in items">
+          <h6 class="list-group-item-heading" name="{{ item.name }}">{{ item.name }}<span class="badge pull-right">{{ item.quantity }}</span></h6>
         </div>
       </div>
     </div>

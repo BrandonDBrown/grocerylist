@@ -13,21 +13,26 @@ angular.module('myApp.list', ['ngRoute'])
   $scope.items = [];
   $scope.strike = false;
   var listIngredients = [];
+  var quantity = 0;
   $scope.currentUser = Account.getCurrentId();
   $scope.currentList = _.last($location.path().split('/'));
 
   List.find({filter: {where: {id: $scope.currentList}}},
     function(response) {
-      console.log(response);
-      $scope.stuff = response[0].recipes;
-      console.log($scope.stuff);
-      for (var i=0; i<$scope.stuff.length; i++) {
-        listIngredients.push($scope.stuff[i]);
+      var stuff = response[0].recipes;
+      for(var i=0; i<stuff.length; i++) {
+        if(_.where(stuff, {name: stuff[i].name, category: stuff[i].category}).length > 1) {
+          var dups = _.where(stuff, {name: stuff[i].name, category: stuff[i].category});
+          for(var x=0;x<dups.length; x++) {
+            stuff = _.without(stuff, dups[x]);
+            quantity = quantity + dups[x].quantity;
+            dups[0].quantity = quantity;
+          }
+          stuff.push(dups[0]);
+        };
       }
-      $scope.items = listIngredients;
-      console.log(listIngredients);
-      $scope.categories = _.without(_.uniq(_.pluck(listIngredients, 'category')), undefined);
-      console.log($scope.categories);
+      $scope.items = stuff;
+      $scope.categories = _.without(_.uniq(_.pluck(stuff, 'category')), undefined);
     },
     function(response) {
       console.log(response);
@@ -36,7 +41,13 @@ angular.module('myApp.list', ['ngRoute'])
 
 
   $scope.strikeMe = function(event) {
-    $scope.nameId = event.currentTarget.getAttribute('name');
+    // console.log(event.currentTarget.innerText);
+    // List.upsert({ id: 1, recipes: [{ name: event.currentTarget.innerText, quantity: 5 }] } , function(err, obj) {
+    //   console.log(err);
+    //   console.log(obj);
+    // })
+
+    // console.log(event.parentTarget.getAttribute('class'))
     if(event.currentTarget.getAttribute('class').includes('strike')){
       $(event.target).removeClass("strike");
     } else {
