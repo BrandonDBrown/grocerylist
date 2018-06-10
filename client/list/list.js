@@ -41,50 +41,22 @@ angular.module('myApp.list', ['ngRoute'])
 
 
   $scope.strikeMe = function(event) {
-    // console.log(event.currentTarget.innerText);
     // List.upsert({ id: 1, recipes: [{ name: event.currentTarget.innerText, quantity: 5 }] } , function(err, obj) {
     //   console.log(err);
     //   console.log(obj);
     // })
-
-    // console.log(event.parentTarget.getAttribute('class'))
-    if(event.currentTarget.getAttribute('class').includes('strike')){
-      $(event.target).removeClass("strike");
-    } else {
-      $(event.target).addClass("strike");
-    }
+    var name = angular.element(event.target).closest('h6')[0].childNodes[0].data;
+    var remove = _.where($scope.items, {name: name});
+    var undo = _.where($scope.items, {name: name});
+    console.log(remove);
+    $scope.items = _.without($scope.items, remove[0]);
   }
-
-//   console.log(elem.currentTarget.getAttribute('class'));
-//   // _.without($scope.items, _.find($scope.items, ))
-//   // $scope.items = _.without($scope.items, );
-//   console.log($scope.items);
-// }
-
-
-
-  // $scope.categories = {
-  //   One:'Baby Care',
-  //   Two:'Beverages',
-  //   Three:'Bread and Bakery',
-  //   Four:'Breakfast and Cereal',
-  //   Five:'Canned Goods and Soups',
-  //   Six:'Condiments, Spices and Bake',
-  //   Seven:'Cookies, Snacks and Candy',
-  //   Eight:'Dairy, Eggs and Cheese',
-  //   Nine:'Deli',
-  //   Ten:'Frozen Foods',
-  //   Eleven:'Fruits and Vegetables',
-  //   Twelve:'Grains, Pasta and Sides',
-  //   Thirteen:'International Cuisine',
-  //   Fourteen:'Meat and Seafood',
-  //   Fifteen:'Paper, Cleaning and Home',
-  //   Sixteen:'Personal Care and Health',
-  //   Seventeen:'Pet Care',
-  //   Eighteen:'Wine, Beer and Spirits'
-  // }
+  $scope.undoMe = function(event) {
+    // List.upsert({ id: 1, recipes: [{ name: event.currentTarget.innerText, quantity: 5 }] } , function(err, obj) {
+    //   console.log(err);
+    //   console.log(obj);
+    // })
+    var undo = _.where($scope.items, {name: name});
+    $scope.items.push(undo);
+  }
 }]);
-
-// The list is then separated by position and when you delete all the items from one position
-// the head representing position turns green with a checkbox
-// with the one click delete feature maybe you could have a undo button at the top right that only undo's one time
